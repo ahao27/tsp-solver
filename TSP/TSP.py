@@ -60,7 +60,7 @@ def travel(adj_mat, src=0):
 def length(adj_mat, node):
     tour = node.path
     # returns the sum of two consecutive elements of tour in adj[i][j]
-    return sum([adj_mat[tour[i]][tour[i + 1]] for i in xrange(len(tour) - 1)])
+    return sum([adj_mat[tour[i]][tour[i + 1]] for i in range(len(tour) - 1)])
 
 
 def bound(adj_mat, node):
@@ -73,13 +73,13 @@ def bound(adj_mat, node):
     remain = filter(lambda x: x not in path, range(n))
 
     # for the edges that are certain
-    for i in xrange(len(path) - 1):
+    for i in range(len(path) - 1):
         _bound += adj_mat[path[i]][path[i + 1]]
 
     # for the last item
     _bound += min([adj_mat[last][i] for i in remain])
 
-    p = [path[0]] + remain
+    p = [path[0]] + list(remain)
     # for the undetermined nodes
     for r in remain:
         _bound += min([adj_mat[r][i] for i in filter(lambda x: x != r, p)])
@@ -97,4 +97,4 @@ if __name__ == '__main__':
 	    [18, 7, 17, 4, 0]
 	]
 
-	print travel(matrix)
+	print(travel(matrix))

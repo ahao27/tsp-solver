@@ -2,7 +2,7 @@
 Node class 
 and sample Priority Queue 
 '''
-from Queue import PriorityQueue
+from queue import PriorityQueue
 
 pq = PriorityQueue()
 
@@ -19,6 +19,29 @@ class Node(object):
     def __str__(self):
         return str(tuple([self.level, self.path, self.bound]))
 
+    def __eq__(self, other):
+        return (self.path == other.path) and (self.bound == other.bound)
+
+    def __ne__(self, other):
+        return not (self == other)
+
+    def __lt__(self, other):
+        return (self.path < other.path) and (self.bound < other.bound)
+
+    def __gt__(self, other):
+        return (self.path > other.path) and (self.bound > other.bound)
+
+    def __le__(self, other):
+        return (self < other) or (self == other)
+
+    def __ge__(self, other):
+        return (self > other) or (self == other)
+
+
+
+
+
+
 
 if __name__ == '__main__':
     pq = PriorityQueue()
@@ -26,7 +49,7 @@ if __name__ == '__main__':
     pq.put(Node(4, [1, 3, 2], 1))
     pq.put(Node(1, [1, 2], 7))
     while not pq.empty():
-        print pq.get()
+        print (pq.get())
 
     pq.put(Node(3, [1, 2, 5], 12))
 

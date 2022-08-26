@@ -48,7 +48,7 @@ def travel(adj_mat, src=0):
 
     # shifting to proper source(start of path)
     optimal_tour_src = optimal_tour
-    if src is not 1:
+    if src != 1:
         optimal_tour_src = optimal_tour[:-1]
         y = optimal_tour_src.index(src)
         optimal_tour_src = optimal_tour_src[y:] + optimal_tour_src[:y]
